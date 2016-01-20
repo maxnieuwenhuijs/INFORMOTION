@@ -1,0 +1,138 @@
+<DOCTYPE html>
+<html>
+<head>
+    <title>Amsterdam</title>
+    <meta http-equiv="Content-type" content="text/html;charset=utf-8" />
+    <meta name="description" content="uitleg over de website" />
+    <meta name="author" content="Max Nieuwenhuijs" />
+    <meta name="keywords" content="zoekterm1, zoekterm2, ..." />
+    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+
+<body>
+<div id="map"></div>
+	<p id="demo"></p>
+
+    <script>
+
+      var map;
+      
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {center: {lat: 52.385599, lng: 4.887290}, zoom: 17, zoomControl: true ,scaleControl: false,scrollwheel: true,disableDoubleClickZoom: true,draggable: true,disableDefaultUI: true, minZoom: 16});
+
+var styles = 
+[{"featureType":"water","elementType":"geometry","stylers":[{"color":"#c2c2be"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#e6e6e5"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}];
+
+map.setOptions({styles: styles});
+
+var markers = [
+{"Serial":100858,"Maandag":69,"Dinsdag":19,"Woensdag":69,"Donderdag":19,"Vrijdag":43,"Zaterdag":16,"Zondag":null,"Adres":"Bickersgracht","Huisnummer":46,"Lat":52.384988,"Long":4.891606},
+{"Serial":100859,"Maandag":119,"Dinsdag":31,"Woensdag":63,"Donderdag":13,"Vrijdag":38,"Zaterdag":null,"Zondag":null,"Adres":"Bickersgracht","Huisnummer":46,"Lat":52.386083,"Long":4.891706},
+{"Serial":100861,"Maandag":129,"Dinsdag":44,"Woensdag":138,"Donderdag":31,"Vrijdag":81,"Zaterdag":6,"Zondag":50,"Adres":"Bickersgracht","Huisnummer":260,"Lat":52.38638,"Long":4.88917},
+{"Serial":100862,"Maandag":50,"Dinsdag":25,"Woensdag":75,"Donderdag":null,"Vrijdag":13,"Zaterdag":13,"Zondag":13,"Adres":"Bickersgracht","Huisnummer":286,"Lat":52.38657,"Long":4.88915},
+{"Serial":100863,"Maandag":75,"Dinsdag":19,"Woensdag":63,"Donderdag":13,"Vrijdag":19,"Zaterdag":null,"Zondag":null,"Adres":"Blokmakerstraat","Huisnummer":39,"Lat":52.38369,"Long":4.88965},
+{"Serial":100864,"Maandag":138,"Dinsdag":38,"Woensdag":125,"Donderdag":31,"Vrijdag":38,"Zaterdag":null,"Zondag":null,"Adres":"Blokmakerstraat","Huisnummer":39,"Lat":52.383636,"Long":4.889100},
+{"Serial":100865,"Maandag":88,"Dinsdag":81,"Woensdag":75,"Donderdag":75,"Vrijdag":38,"Zaterdag":25,"Zondag":75,"Adres":"De Ruijterkade","Huisnummer":6,"Lat":52.38191,"Long":4.89527},
+{"Serial":100866,"Maandag":88,"Dinsdag":38,"Woensdag":75,"Donderdag":63,"Vrijdag":38,"Zaterdag":13,"Zondag":null,"Adres":"De Ruijterkade","Huisnummer":15,"Lat":52.37740,"Long":4.90995},
+{"Serial":100867,"Maandag":69,"Dinsdag":31,"Woensdag":56,"Donderdag":50,"Vrijdag":25,"Zaterdag":19,"Zondag":13,"Adres":"De Ruijterkade","Huisnummer":16,"Lat":52.37740,"Long":4.90995},
+{"Serial":100868,"Maandag":69,"Dinsdag":13,"Woensdag":88,"Donderdag":19,"Vrijdag":25,"Zaterdag":31,"Zondag":38,"Adres":"Grote Bickerstraat","Huisnummer":86,"Lat":52.385951,"Long":4.889324},
+{"Serial":100869,"Maandag":88,"Dinsdag":13,"Woensdag":75,"Donderdag":19,"Vrijdag":13,"Zaterdag":null,"Zondag":null,"Adres":"Grote Bickerstraat","Huisnummer":86,"Lat":52.38673,"Long":4.88997},
+{"Serial":100872,"Maandag":75,"Dinsdag":69,"Woensdag":69,"Donderdag":75,"Vrijdag":41,"Zaterdag":25,"Zondag":69,"Adres":"Hendrik Jonkerplein","Huisnummer":2,"Lat":52.38384,"Long":4.88857},
+{"Serial":100873,"Maandag":75,"Dinsdag":94,"Woensdag":75,"Donderdag":81,"Vrijdag":50,"Zaterdag":63,"Zondag":63,"Adres":"Hendrik Jonkerplein","Huisnummer":10,"Lat":52.38388,"Long":4.88858},
+{"Serial":100874,"Maandag":69,"Dinsdag":56,"Woensdag":63,"Donderdag":69,"Vrijdag":38,"Zaterdag":31,"Zondag":31,"Adres":"Hendrik Jonkerplein","Huisnummer":9999,"Lat":52.384294,"Long":4.888642},
+{"Serial":100875,"Maandag":69,"Dinsdag":25,"Woensdag":75,"Donderdag":38,"Vrijdag":25,"Zaterdag":6,"Zondag":31,"Adres":"Hollandse tuin","Huisnummer":5,"Lat":52.38454,"Long":4.89008},
+{"Serial":100876,"Maandag":50,"Dinsdag":19,"Woensdag":75,"Donderdag":31,"Vrijdag":19,"Zaterdag":16,"Zondag":13,"Adres":"Hollandse tuin","Huisnummer":9,"Lat":52.38410,"Long":4.88995},
+{"Serial":100877,"Maandag":69,"Dinsdag":19,"Woensdag":38,"Donderdag":50,"Vrijdag":50,"Zaterdag":22,"Zondag":19,"Adres":"Hollandse tuin","Huisnummer":11,"Lat":52.38397,"Long":4.88993},
+{"Serial":100878,"Maandag":69,"Dinsdag":19,"Woensdag":69,"Donderdag":38,"Vrijdag":31,"Zaterdag":28,"Zondag":25,"Adres":"Hollandse tuin","Huisnummer":14,"Lat":52.38381,"Long":4.88988},
+{"Serial":100879,"Maandag":88,"Dinsdag":44,"Woensdag":69,"Donderdag":31,"Vrijdag":19,"Zaterdag":null,"Zondag":25,"Adres":"Hollandse tuin","Huisnummer":16,"Lat":52.383230,"Long":4.890165},
+{"Serial":100880,"Maandag":50,"Dinsdag":13,"Woensdag":69,"Donderdag":19,"Vrijdag":null,"Zaterdag":null,"Zondag":null,"Adres":"Houtmanstraat","Huisnummer":1,"Lat":52.38749,"Long":4.88507},
+{"Serial":100881,"Maandag":81,"Dinsdag":31,"Woensdag":75,"Donderdag":31,"Vrijdag":44,"Zaterdag":13,"Zondag":19,"Adres":"Houtmanstraat","Huisnummer":39,"Lat":52.38668,"Long":4.88443},
+{"Serial":100882,"Maandag":75,"Dinsdag":19,"Woensdag":50,"Donderdag":38,"Vrijdag":38,"Zaterdag":null,"Zondag":19,"Adres":"Houtmanstraat","Huisnummer":81,"Lat":52.38660,"Long":4.88438},
+{"Serial":100883,"Maandag":75,"Dinsdag":25,"Woensdag":56,"Donderdag":19,"Vrijdag":56,"Zaterdag":16,"Zondag":null,"Adres":"Jan Mensplein","Huisnummer":42,"Lat":52.38778,"Long":4.88915},
+{"Serial":100884,"Maandag":56,"Dinsdag":25,"Woensdag":63,"Donderdag":44,"Vrijdag":6,"Zaterdag":null,"Zondag":null,"Adres":"Keerpunt","Huisnummer":12,"Lat":52.38442,"Long":4.88972},
+{"Serial":100885,"Maandag":56,"Dinsdag":6,"Woensdag":56,"Donderdag":25,"Vrijdag":44,"Zaterdag":19,"Zondag":13,"Adres":"Korte Zoutkeetsgracht","Huisnummer":2,"Lat":52.38785,"Long":4.88543},
+{"Serial":100886,"Maandag":75,"Dinsdag":19,"Woensdag":75,"Donderdag":19,"Vrijdag":44,"Zaterdag":16,"Zondag":13,"Adres":"Korte Zoutkeetsgracht","Huisnummer":2,"Lat":52.38785,"Long":4.88543},
+{"Serial":100887,"Maandag":38,"Dinsdag":69,"Woensdag":88,"Donderdag":69,"Vrijdag":44,"Zaterdag":19,"Zondag":69,"Adres":"Nieuwe Teertuinen","Huisnummer":3,"Lat":52.38669,"Long":4.88559},
+{"Serial":100888,"Maandag":81,"Dinsdag":56,"Woensdag":75,"Donderdag":75,"Vrijdag":44,"Zaterdag":19,"Zondag":50,"Adres":"Nieuwe Teertuinen","Huisnummer":60,"Lat":52.38523,"Long":4.88537},
+{"Serial":100889,"Maandag":88,"Dinsdag":75,"Woensdag":75,"Donderdag":75,"Vrijdag":44,"Zaterdag":13,"Zondag":38,"Adres":"Planciusstraat","Huisnummer":25,"Lat":52.38697,"Long":4.88505},
+{"Serial":100890,"Maandag":63,"Dinsdag":56,"Woensdag":63,"Donderdag":56,"Vrijdag":19,"Zaterdag":null,"Zondag":25,"Adres":"Prinseneiland","Huisnummer":43,"Lat":52.38645,"Long":4.88725},
+{"Serial":100891,"Maandag":69,"Dinsdag":50,"Woensdag":63,"Donderdag":50,"Vrijdag":null,"Zaterdag":null,"Zondag":null,"Adres":"Prinseneiland","Huisnummer":48,"Lat":52.38533,"Long":4.88783},
+{"Serial":100892,"Maandag":44,"Dinsdag":25,"Woensdag":56,"Donderdag":38,"Vrijdag":null,"Zaterdag":null,"Zondag":null,"Adres":"Prinseneiland","Huisnummer":397,"Lat":52.38484,"Long":4.88755},
+{"Serial":100893,"Maandag":88,"Dinsdag":56,"Woensdag":69,"Donderdag":54,"Vrijdag":19,"Zaterdag":null,"Zondag":null,"Adres":"Prinseneiland","Huisnummer":69,"Lat":52.38611,"Long":4.88664},
+{"Serial":100894,"Maandag":81,"Dinsdag":50,"Woensdag":56,"Donderdag":38,"Vrijdag":19,"Zaterdag":null,"Zondag":null,"Adres":"Prinseneiland","Huisnummer":9999,"Lat":52.38559,"Long":4.88773},
+{"Serial":100895,"Maandag":75,"Dinsdag":44,"Woensdag":62,"Donderdag":0,"Vrijdag":38,"Zaterdag":null,"Zondag":25,"Adres":"Realengracht","Huisnummer":2,"Lat":52.38733,"Long":4.88997},
+{"Serial":100896,"Maandag":75,"Dinsdag":25,"Woensdag":56,"Donderdag":19,"Vrijdag":38,"Zaterdag":null,"Zondag":null,"Adres":"Schiemanstraat","Huisnummer":9999,"Lat":52.38611,"Long":4.88370},
+{"Serial":100897,"Maandag":63,"Dinsdag":31,"Woensdag":81,"Donderdag":38,"Vrijdag":31,"Zaterdag":22,"Zondag":25,"Adres":"Touwslagerstraat","Huisnummer":51,"Lat":52.38498,"Long":4.88980},
+{"Serial":100898,"Maandag":75,"Dinsdag":38,"Woensdag":56,"Donderdag":56,"Vrijdag":50,"Zaterdag":13,"Zondag":44,"Adres":"Vierwindendwarsstraat","Huisnummer":1,"Lat":52.38720,"Long":4.88713},
+{"Serial":100899,"Maandag":75,"Dinsdag":31,"Woensdag":56,"Donderdag":19,"Vrijdag":null,"Zaterdag":null,"Zondag":null,"Adres":"Vierwindenstraat","Huisnummer":201,"Lat":52.38761,"Long":4.88641},
+{"Serial":100900,"Maandag":31,"Dinsdag":38,"Woensdag":56,"Donderdag":19,"Vrijdag":38,"Zaterdag":null,"Zondag":null,"Adres":"Vierwindenstraat","Huisnummer":201,"Lat":52.38761,"Long":4.88641},
+{"Serial":100901,"Maandag":69,"Dinsdag":38,"Woensdag":69,"Donderdag":75,"Vrijdag":44,"Zaterdag":19,"Zondag":56,"Adres":"Westerdok","Huisnummer":1,"Lat":52.38336,"Long":4.89134},
+{"Serial":100902,"Maandag":69,"Dinsdag":50,"Woensdag":75,"Donderdag":69,"Vrijdag":38,"Zaterdag":13,"Zondag":50,"Adres":"Westerdok","Huisnummer":49,"Lat":52.38915,"Long":4.89111},
+{"Serial":100903,"Maandag":81,"Dinsdag":63,"Woensdag":75,"Donderdag":75,"Vrijdag":44,"Zaterdag":25,"Zondag":75,"Adres":"Westerdok","Huisnummer":272,"Lat":52.38411,"Long":4.89172},
+{"Serial":100904,"Maandag":75,"Dinsdag":63,"Woensdag":69,"Donderdag":75,"Vrijdag":44,"Zaterdag":6,"Zondag":38,"Adres":"Westerdok","Huisnummer":606,"Lat":52.38569,"Long":4.89192},
+{"Serial":100905,"Maandag":69,"Dinsdag":13,"Woensdag":81,"Donderdag":null,"Vrijdag":44,"Zaterdag":31,"Zondag":25,"Adres":"Westerdok","Huisnummer":816,"Lat":52.38701,"Long":4.89182},
+{"Serial":100906,"Maandag":69,"Dinsdag":null,"Woensdag":44,"Donderdag":31,"Vrijdag":31,"Zaterdag":19,"Zondag":31,"Adres":"Westerdoksplein","Huisnummer":9999,"Lat":52.38337,"Long":4.89242},
+{"Serial":100907,"Maandag":69,"Dinsdag":31,"Woensdag":44,"Donderdag":13,"Vrijdag":50,"Zaterdag":13,"Zondag":13,"Adres":"Zandhoek ","Huisnummer":4,"Lat":52.38757,"Long":4.89003},
+{"Serial":100908,"Maandag":81,"Dinsdag":44,"Woensdag":50,"Donderdag":19,"Vrijdag":31,"Zaterdag":28,"Zondag":38,"Adres":"Zandhoek","Huisnummer":14,"Lat":52.38811,"Long":4.89000}];
+
+//Create and open InfoWindow.
+        var infoWindow = new google.maps.InfoWindow();
+
+var icon;
+
+  for (var i = 0; i < markers.length; i++) {
+
+    var data = markers[i];
+    var dayX = data.Maandag;
+
+      if ( dayX < 25){
+        icon = {url:'img/prullenbak_12.png'};
+      }else if ( dayX >= 25 && dayX < 50){
+        icon = {url:'img/prullenbak_25.png'};
+      }else if ( dayX >= 50 && dayX < 60){
+        icon = {url:'img/prullenbak_53.png'};
+      } else if ( dayX >= 60 && dayX < 75){
+        icon = {url:'img/prullenbak_75.png'};
+      }else if ( dayX >= 75 && dayX < 101){
+        icon = {url:'img/prullenbak_85.png'};
+      }else if ( dayX >= 101){
+        icon = {url:'img/prullenbak_overvol.png'};
+      };
+            var myLatlng = new google.maps.LatLng(data.Lat, data.Long);
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: data.Serial,
+                icon: icon
+            });
+
+ //Attach click event to the marker.
+            (function (marker, data) {
+                google.maps.event.addListener(marker, "click", function (e) {
+                    //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
+                    infoWindow.setContent("<div style = 'width:200px;min-height:40px'><h1>" + data.Serial + "</h1><p>Gemiddeld: "+data.Maandag+"% vol</p></div>");
+                    infoWindow.open(map, marker);
+                });
+            })(marker, data);
+        }
+
+ 
+var menuBack = document.getElementById("menuBack");
+	menuBack.addEventListener('click', function() {
+    location.reload(); 
+  });
+
+ 
+}//MAPS END
+
+</script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrwVLgcogp1Hmfdj9IbOJyinVmOBt9SSo&callback=initMap"
+    async defer></script>
+
+
+</body>
+
+</html>

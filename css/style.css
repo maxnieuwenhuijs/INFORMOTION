@@ -1,0 +1,77 @@
+html, body { 
+	height: 100%; 
+	margin: 0; 
+	padding: 0; 
+	font-family: 'Lato', sans-serif;
+}
+      
+#map { 
+	height: 90%;
+	width:100%;
+	}
+
+nav{
+	margin-top: -20px;
+	background-color: black;
+}
+
+#divider{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d88088+0,3f000c+100 */
+background: rgb(216,128,136); /* Old browsers */
+background: -moz-linear-gradient(left,  rgba(216,128,136,1) 0%, rgba(63,0,12,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left,  rgba(216,128,136,1) 0%,rgba(63,0,12,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right,  rgba(216,128,136,1) 0%,rgba(63,0,12,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d88088', endColorstr='#3f000c',GradientType=1 ); /* IE6-9 */
+height:5px;
+width:100%;
+margin-top: -20px;
+}
+
+ul{
+	text-align: center;
+	padding-top:10px;
+}
+
+li{
+	display: inline-block;
+	margin: 10px 60px 20px 60px;
+	color: white;
+	text-align: center;
+	font-size: 25px;
+}
+
+li:hover{
+	color: #6B0E1C;
+	cursor: pointer;
+}
+
+.active{
+	color: #8F434D;
+}
+
+.text-info{
+	text-align: left;
+	font-size: 11px;
+}
+
+.leeg{
+	    text-decoration: underline;
+}
+
+.none{
+	display: none;
+}
+
+iframe{
+	height: 100%;
+	width:100%;
+	display: none;
+}
+
+#Maandag, #Dinsdag, #Woensdag, #Donderdag, #Vrijdag{
+	display: none;
+}
+
+b{
+	color: #8F434D;
+}
